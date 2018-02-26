@@ -8,9 +8,9 @@ hbs.registerPartials(__dirname+"/views/partials");
 
 app.set('view engine', 'hbs');
 
-
-
 app.use((req, res, next) => {
+  console.log(req);
+    console.log(res);
   var now = new Date().toString();
 
   var log = `${now} ${req.method} ${req.url}`;
@@ -59,6 +59,13 @@ app.get('/about', (req, res)=>{
    });
 });
 
+app.get('/products', (req, res)=>{
+   res.render('products.hbs', {
+       title:"Products Page For Testing",
+       header:"Product Page",
+       text:"Products page",
+   });
+});
 
 app.get('/bad', (req, res)=>{
     res.send({
